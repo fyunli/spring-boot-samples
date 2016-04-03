@@ -1,9 +1,6 @@
 package li.fyunli.springboot.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -19,6 +16,8 @@ public class Todo implements Serializable {
     private Long id;
     @Column(length = 255, nullable = false)
     private String content;
+    @Column
+    private boolean checked;
 
     public Long getId() {
         return id;
@@ -36,4 +35,11 @@ public class Todo implements Serializable {
         this.content = content;
     }
 
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
 }

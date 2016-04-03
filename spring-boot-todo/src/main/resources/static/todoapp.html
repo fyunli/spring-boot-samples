@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="fyunli">
+
+    <title>Spring Boot - todo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="//cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="myApp">
+<div class="container" ng-controller="AppController">
+    <div class="page-header">
+        <h1>Spring Boot: TODO</h1>
+    </div>
+    <div class="alert alert-info" role="alert" ng-hide="items && items.length > 0">
+        There are no items yet.
+    </div>
+    <form class="form-horizontal" role="form" ng-submit="addItem(newItem)">
+        <div class="form-group" ng-repeat="item in items">
+            <div class="checkbox col-xs-9">
+                <label>
+                    <input type="checkbox" ng-model="item.checked" ng-change="updateItem(item)"/> {{item.content}}
+                </label>
+            </div>
+            <div class="col-xs-3">
+                <button class="pull-right btn btn-danger" type="button" title="Delete"
+                        ng-click="deleteItem(item)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </div>
+        </div>
+        <hr/>
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="newItem" placeholder="Enter the content..."/>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" ng-disabled="!newItem" title="Add">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </span>
+        </div>
+    </form>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">&copy;2016 fyunli</p>
+    </div>
+</footer>
+
+<script src="//cdn.jsdelivr.net/angularjs/1.5.0/angular.min.js"></script>
+<script src="//cdn.jsdelivr.net/angularjs/1.5.0/angular-resource.min.js"></script>
+<script src="//cdn.jsdelivr.net/lodash/4.7.0/lodash.min.js"></script>
+<script type="text/javascript" src="./app/app.js"></script>
+<script type="text/javascript" src="./app/controllers.js"></script>
+<script type="text/javascript" src="./app/services.js"></script>
+</body>
+</html>
